@@ -1,0 +1,42 @@
+export const platosMock = [
+  {
+    id: 1,
+    nombre: "Lomo Saltado",
+    categoria: "SEGUNDO",
+    precio: 18,
+    stock: 3,
+    disponible: true,
+  },
+  {
+    id: 2,
+    nombre: "Arroz con Pollo",
+    categoria: "SEGUNDO",
+    precio: 12,
+    stock: 5,
+    disponible: true,
+  },
+  {
+    id: 3,
+    nombre: "Sopa de Verduras",
+    categoria: "ENTRADA",
+    precio: 8,
+    stock: 0,
+    disponible: true,
+  },
+  {
+    id: 4,
+    nombre: "Pollo a la Brasa",
+    categoria: "SEGUNDO",
+    precio: 20,
+    stock: 4,
+    disponible: false,
+  },
+  {
+    id: 5,
+    nombre: "Jugo de Naranja",
+    categoria: "BEBIDAS",
+    precio: 5,
+    stock: 8,
+    disponible: true,
+  },
+];
