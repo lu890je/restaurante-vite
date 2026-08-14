@@ -1,8 +1,7 @@
-function App() {
-  return (
-    <h1>Restaurante La Leña</h1>
-  )
-} 
- 
-export default App
+import Home from "./pages/Home";
 
+function App() {
+  return <Home />;
+}
+
+export default App;
