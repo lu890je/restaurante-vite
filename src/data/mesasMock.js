@@ -6,4 +6,4 @@ export const mesasMock = [
     { id: 5, numero: 5, capacidad: 8, estado: "libre", comensales: 0 },
     { id: 6, numero: 6, capacidad: 2, estado: "reservada", comensales: 0 },
   ];
-  
+    
