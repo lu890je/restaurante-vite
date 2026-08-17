@@ -1,32 +1,66 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-function OrderForm() {
-  const [form, setForm] = useState({ cliente: '', mesa: '', plato: '' });
+function OrderForm({ mesaNumero }) {
+  const [plato, setPlato] = useState("");
+  const [cantidad, setCantidad] = useState(1);
+  const [enviando, setEnviando] = useState(false);
+  const [mensaje, setMensaje] = useState("");
 
-  // 🔹 Equivalente a componentDidMount + componentWillUnmount
-  useEffect(() => {
-    console.log('🟢 [FUNCIONAL] Componente montado');
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-    // Función de limpieza (Cleanup) -> Equivalente a componentWillUnmount
-    return () => {
-      console.log('🔴 [FUNCIONAL] Componente desmontado');
-    };
-  }, []); // Array vacío = corre solo 1 vez al montar
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    if (name === "plato") setPlato(value);
+    if (name === "cantidad") setCantidad(value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Comanda (Funcional):', form);
-  };   
+  useEffect(() => {
+    console.log("OrderForm montado — mesa:", mesaNumero);
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setEnviando(true);
+    setMensaje("");
+
+    setTimeout(() => {
+      setEnviando(false);
+      setMensaje(`Comanda enviada: ${plato} x${cantidad}`);
+      setPlato("");
+      setCantidad(1);
+    }, 1500);
+  };
 
   return (
-    <form onSubmit={handleSubmit} style={{ border: '1px solid #4CAF50', padding: '15px' }}>
-      <h3>Formulario (Versión Funcional)</h3>
-      <input type="text" name="cliente" placeholder="Cliente" value={form.cliente} onChange={handleChange} />
-      <button type="submit">Enviar</button>
+    <form onSubmit={handleSubmit}>
+      <h3>Mesa {mesaNumero}</h3>
+
+      <div>
+        <label>Plato:</label>
+        <input
+          type="text"
+          name="plato"
+          value={plato}
+          onChange={handleChange}
+          placeholder="Nombre del plato"
+        />
+      </div>
+
+      <div>
+        <label>Cantidad:</label>
+        <input
+          type="number"
+          name="cantidad"
+          min="1"
+          value={cantidad}
+          onChange={handleChange}
+        />
+      </div>
+
+      <button type="submit" disabled={enviando}>
+        {enviando ? "Enviando..." : "Enviar comanda"}
+      </button>
+
+      {mensaje && <p>{mensaje}</p>}
     </form>
   );
 }
