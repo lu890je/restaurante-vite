@@ -1,0 +1,66 @@
+ESTUDIANTE A: LUIS 
+
+1-.¿Qué diferencia hay entre props y estado? Explícalo con el ejemplo de MesaCard — ¿cuál de sus datos 
+es una prop y cuál podría ser estado en el futuro?
+
+Las props son datos externos de solo lectura que el padre le pasa al componente hijo, mientras que el 
+estado es información interna y modificable que el propio componente controla. En MesaCard, el número 
+de mesa y su capacidad son props porque no cambian, mientras que la disponibilidad de la mesa ("libre",
+"ocupada") podría ser un estado en el futuro para cambiar dinámicamente cuando un usuario haga clic en ella.
+
+2-.¿Por qué las props son de solo lectura dentro del componente hijo? ¿Qué
+pasaría si MesaCard pudiera modificar la prop estado directamente?
+
+Las props son de solo lectura para mantener un flujo de datos unidireccional (de 
+arriba a abajo) y garantizar que la aplicación sea predecible. Si MesaCard pudiera modificar 
+directamente la prop estado, la tarjeta diría que la mesa está ocupada mientras el componente
+padre (MesasPage) sigue pensando que está libre, generando inconsistencias visuales y errores muy difíciles de rastrear.
+
+3-.Hoy NavBar muestra "Carta", "Mesas" y "Comandas" como texto. En el Día 7 se convierte en
+navegación real. ¿Qué tendrás que cambiar en NavBar ese día y qué NO tendrás que tocar?
+
+Solo se tendrá que cambiar los textos planos ("Carta", "Mesas", "Comandas") por componentes
+<Link> o <NavLink> de React Router. NO se tendrá que tocar la estructura principal del <nav>, la 
+prop nombreRestaurante, sus PropTypes ni su valor por defecto, ya que esa lógica no depende del enrutador.
+
+4-.En DevTools viste el árbol de componentes. ¿Cómo sabes si un componente recibió las props 
+correctas sin tener que leer el código del padre?
+
+En la pestaña Components de React DevTools, basta con hacer clic sobre el componente
+en el árbol. En la columna de la derecha se abrirá el panel Props, el cual muestra en tiempo 
+real los nombres y valores exactos de todas las propiedades que el padre le está enviando.
+
+----------------------------------------------------------------------------------------------
+
+ESTUDIANTE B: RENZO
+
+1-.¿Qué diferencia hay entre props y estado? Explícalo con el ejemplo de MesaCard — ¿cuál de
+sus datos es una prop y cuál podría ser estado en el futuro?
+
+La diferencia central es que las props funcionan como parámetros de entrada que un componente recibe
+desde afuera (no se pueden alterar internamente), mientras que el estado es la memoria interna del 
+componente que almacena información cambiante. En MesaCard, datos como el número identificador o la capacidad 
+de asientos son props fijas enviadas por la página; en cambio, el indicador de la mesa ("ocupada" o "libre") 
+pasaría a ser un estado local cuando se agregue la función de reservar o liberar la mesa interactuando con la interfaz.
+
+2-.¿Por qué las props son de solo lectura dentro del componente hijo? ¿Qué pasaría si MesaCard pudiera modificar
+la prop estado directamente?
+
+Se definen de solo lectura para preservar la arquitectura limpia de React, donde la 
+información viaja en una sola dirección hacia abajo. Si MesaCard tuviera el poder de alterar 
+la prop estado por su cuenta, provocaría un desajuste entre la vista del componente individual y los datos reales 
+alojados en MesasPage, resultando en fallos de sincronización y un código desordenado e impredecible.
+
+3-.Hoy NavBar muestra "Carta", "Mesas" y "Comandas" como texto. En el Día 7 se convierte en navegación real. ¿Qué
+tendrás que cambiar en NavBar ese día y qué NO tendrás que tocar?
+
+Lo único a modificar será envolver los nombres de las secciones en etiquetas de enlace interactivas 
+de React Router (como <Link>). Por el contrario, se mantendrá intacto todo el resto del componente: el contenedor 
+<nav>, la destructuración de nombreRestaurante con su valor por omisión y las validaciones hechas con PropTypes.
+
+4-.En DevTools viste el árbol de componentes. ¿Cómo sabes si un componente recibió las props 
+correctas sin tener que leer el código del padre?
+
+Simplemente seleccionas el nodo del componente objetivo dentro del panel de React DevTools. Al marcarlo,
+la sección lateral derecha desglosa una lista detallada llamada Props donde se aprecian con claridad las variables 
+y valores exactos que le fueron transmitidos.

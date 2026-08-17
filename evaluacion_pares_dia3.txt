@@ -1,0 +1,45 @@
+TARJETA DE EVALUACIÓN:
+
+EVALUADOR: Renzo
+
+EVALUADO: Luis
+
+ESCENARIO ELEGIDO: Escenario 1, 2
+
+RESUMEN DE LA RESPUESTA:
+
+Escenario 1: Si se pasa estado="cerrada", el componente lo renderizará tal cual como texto en la 
+tarjeta o tomará el estilo por defecto, porque no hay un control de valores permitidos. Se evitaría 
+en PropTypes usando PropTypes.oneOf(['libre', 'ocupada', 'reservada']) para limitar los valores válidos.
+
+Escenario 2: En el panel derecho se observan las Props asignadas 
+a la tarjeta (numero, capacidad, estado). Significa que la herramienta 
+nos muestra la información exacta que el componente padre le inyectó para dibujarse.
+
+QUÉ ENTENDIÓ BIEN: Comprendió con total claridad cómo restringir valores específicos 
+usando oneOf en PropTypes y la diferencia conceptual entre los componentes.
+
+QUÉ NECESITA REPASAR: Detallar un poco mejor cómo responde el CSS o los condicionales 
+dinámicos del componente cuando recibe un valor fuera de rango.
+
+--------------------------------------------------------------------------------------
+
+TARJETA DE EVALUACIÓN:
+
+EVALUADOR: Luis
+
+EVALUADO: Renzo
+
+ESCENARIO ELEGIDO: 3
+
+RESUMEN DE LA RESPUESTA:
+
+Escenario 3: ¿Qué diferencia existe en la responsabilidad de App.jsx respecto a PlatoCard? App.jsx 
+actúa como componente contenedor/orquestador que importa y distribuye los datos, mientras que PlatoCard 
+es un componente puramente visual que solo sabe cómo pintar un elemento individual.
+
+QUÉ ENTENDIÓ BIEN: Explicó de manera impecable el rol de los valores por defecto y 
+la función crucial de las keys en la reconciliación de React.
+
+QUÉ NECESITA REPASAR: Precisar la terminología técnica al diferenciar componentes contenedores 
+(smart/container) de componentes de presentación (dumb/presentational).
